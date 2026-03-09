@@ -1,4 +1,4 @@
-import React from 'react'
+
 import ScoreGauge from './ScoreGauge'
 import ScoreBadge from './ScoreBadge'
 const Category = ({title , score } : {score : number , title : string}) =>{
@@ -42,3 +42,4 @@ const Summary = ({feedback} : {feedback : Feedback}) => {
 }
 
 export default Summary
+
