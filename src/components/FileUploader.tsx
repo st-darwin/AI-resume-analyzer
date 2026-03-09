@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import  { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { formatSize } from "../lib/utils";
 
@@ -81,5 +81,6 @@ const FileUploader = ({ file, onFileSelect }: FileUploaderProps) => {
     </div>
   );
 };
+
 
 export default FileUploader;
