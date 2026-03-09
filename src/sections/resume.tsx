@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { usePuterStore } from '../lib/puter'
@@ -66,7 +66,7 @@ const Resume = () => {
       if (resumeUrl) URL.revokeObjectURL(resumeUrl);
       if (imageUrl) URL.revokeObjectURL(imageUrl);
     }
-  }, [id, auth.isAuthenticated, isLoading]);
+  }, [id, auth.isAuthenticated, isLoading , imageUrl , resumeUrl , fs , kv]);
 
   return (
     <main className='!pt-0'>
