@@ -12,7 +12,7 @@ const App = () => {
   useEffect(
     ()=>{
    init()
-    } , []
+    } , [init]
   )
   return (
   
