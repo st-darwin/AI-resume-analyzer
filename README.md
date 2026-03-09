@@ -1,73 +1,56 @@
-# React + TypeScript + Vite
+https://nexacv-ai.vercel.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Nexa CV: AI-Powered Resume Intelligence
+Nexa CV is a high-performance web application designed to bridge the gap between job seekers and Applicant Tracking Systems (ATS). Using the Puter SDK for cloud-native storage and AI analysis, it transforms static PDFs into actionable career insights.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✨ Key Features
+Instant PDF-to-Image Conversion: High-fidelity resume previews using pdf.js with dedicated Web Worker support.
 
-## React Compiler
+AI-Driven Analysis: Deep-scan technology that evaluates resumes against industry standards for impact, brevity, and style.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Persistent UUID Routing: Every analysis is stored in the Puter KV Store, allowing users to share unique URLs of their results.
 
-## Expanding the ESLint configuration
+Modern UI/UX: Built with React, styled with Tailwind CSS, and brought to life with GSAP animations.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🛠️ Tech Stack
+Frontend: React 19, Vite, TypeScript
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Styling: Tailwind CSS (utility-first design)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Animations: GSAP (ScrollTrigger & Staggered effects)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Cloud Backend: Puter SDK (Key-Value Storage, Filesystem, and AI Chat)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Deployment: Netlify and  Vercel
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+📂 Project Structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+src/
+├── components/      # Reusable UI elements (Navbar, fileUploader, summary)
+├── lib/             # Puter SDK config, PDF conversion logic, and UUID utils
+├── sections/           # Upload (Home) and Resume (Results) views
+├── types/           # Strong TypeScript interfaces for Puter responses
+└── App.tsx          # Main routing logic
+
+🚀 Getting Started
+1. Clone the repository
+
+git clone https://github.com/st-darwin/AI-resume-analyzer.git
+
+2. Install dependencies
+
+npm install
+
+3. Run locally
+
+npm run dev
+
+Architecture Highlights
+
+The app utilizes a Zero-Server approach. All logic—from file uploading to AI processing—happens directly in the browser via the Puter SDK, ensuring low latency and high privacy.
+-----------------------------------------------
+Developed with 💻 by Darwin ❤️ (Code with Darwin)
+-----------------------------------------------
+
+
