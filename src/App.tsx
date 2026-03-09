@@ -1,5 +1,5 @@
 
-import Auth from './sections/auth'
+import Auth from './sections/Auth'
 import Home from './sections/Home'
 import Upload from './sections/Upload'
 import { Routes, Route } from "react-router-dom"
