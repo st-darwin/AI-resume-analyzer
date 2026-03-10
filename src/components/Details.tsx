@@ -69,9 +69,9 @@ const CategoryContent = ({
                       tip.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"
                     }
                     alt="score"
-                    className="size-5"
+                    className="size-3"
                 />
-                <p className="text-xl text-gray-500 ">{tip.tip}</p>
+                <p className="text-sm text-gray-500 ">{tip.tip}</p>
               </div>
           ))}
         </div>
