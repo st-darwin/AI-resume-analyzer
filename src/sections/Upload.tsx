@@ -19,7 +19,28 @@ const Upload = () => {
     setFile(file);
   };
 
-const handleAnalyze = async ({
+  // --- THE SAVE LOGIC ---
+  const saveToHistory = async (fileName: string, score: number, feedback: any) => {
+    try {
+      const raw = await kv.get('nexa_cv_history');
+      const history = raw ? JSON.parse(raw as string) : [];
+
+      const newEntry = {
+        id: crypto.randomUUID(), 
+        fileName,
+        score,
+        feedback,
+        timestamp: Date.now()
+      };
+
+      const updated = [newEntry, ...history].slice(0, 10);
+      await kv.set('nexa_cv_history', JSON.stringify(updated));
+    } catch (e) {
+      console.error("Save failed:", e);
+    }
+  };
+
+  const handleAnalyze = async ({
     companyName,
     jobTitle,
     jobDescription,
@@ -41,7 +62,6 @@ const handleAnalyze = async ({
       setIsProcessing(true);
       setStatusText("Uploading the PDF...");
 
-      // 1. fs.upload returns an array. We need to grab the first item.
       const uploadResult = await fs.upload([file]);
       const uploadedFile = Array.isArray(uploadResult) ? uploadResult[0] : uploadResult;
 
@@ -49,9 +69,7 @@ const handleAnalyze = async ({
         throw new Error("Failed to upload PDF: No path returned.");
       }
 
-      // 2. Convert PDF to image
       setStatusText("Converting PDF to image...");
-      // Using uploadedFile.path ensures we are passing a string path
       const imagePath = await convertPdfToImage(uploadedFile.path); 
 
       setStatusText("Preparing data...");
@@ -59,25 +77,21 @@ const handleAnalyze = async ({
 
       const data = {
         id: UUID,
-        resumePath: uploadedFile.path, // String path (e.g., /AppData/...)
+        resumePath: uploadedFile.path,
         imagePath,
         jobTitle,
         jobDescription,
         companyName,
-        feedback: "",
+        feedback: {} as any, // Initialize as object
       };
 
-      // Initial save to ensure KV has the record
-      await kv.set(`resume:${UUID}`, JSON.stringify(data));
-
-      // 3. Analyze the resume using AI
       setStatusText("Analyzing resume...");
       const feedback = await ai.feedback(
         uploadedFile.path,
         prepareInstructions({ jobTitle, jobDescription })
       );
 
-      // Robustly extract the text content from the AI response
+      // Extract text content safely
       const feedbackText =
         typeof feedback?.message?.content === "string"
           ? feedback.message.content
@@ -86,24 +100,30 @@ const handleAnalyze = async ({
               : JSON.stringify(feedback));
 
       try {
-        // Attempt to clean the text if the AI wrapped it in markdown code blocks
         const cleanedJson = feedbackText.replace(/```json|```/g, "").trim();
         data.feedback = JSON.parse(cleanedJson);
       } catch {
-        data.feedback = feedbackText; // fallback to raw text
+        data.feedback = { raw: feedbackText }; // fallback
       }
 
-      // Final save with feedback included
+      // Save the main record for the Results page
       await kv.set(`resume:${UUID}`, JSON.stringify(data));
+
+      // --- THE FIX: Save to History before navigating ---
+      // We grab the score from our parsed data (defaulting to 0 if the AI didn't provide one)
+      const finalScore = data.feedback.score || 0;
+      await saveToHistory(file.name, finalScore, data.feedback);
 
       setStatusText("Analysis complete! Redirecting...");
       navigate(`/resume/${UUID}`);
     } catch (err) {
       console.error("Upload/Analysis Error:", err);
       setStatusText((err as Error).message || "An unexpected error occurred.");
-      setIsProcessing(false); // Reset state so user can try again
+      setIsProcessing(false);
     }
   };
+
+  // ... rest of your handleSubmit and return code remains the same ...
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
