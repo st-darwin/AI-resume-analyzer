@@ -62,7 +62,7 @@ const History = () => {
             <p className="text-gray-400 mb-8">Your resume scans will appear here once you upload and analyze your first resume.</p>
             <button
               onClick={() => navigate('/Upload')}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
+              className=" cursor-pointer inline-flex items-center gap-2 px-6 py-3 bg-blue-500/30 backdrop-blur-xl border 2px border-blue-400/60 text-white font-semibold rounded-lg hover:bg-blue-500/50 hover:border-blue-300 shadow-lg shadow-blue-500/20 transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -231,4 +231,3 @@ const History = () => {
 };
 
 export default History;
-
