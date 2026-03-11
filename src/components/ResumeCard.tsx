@@ -4,47 +4,70 @@ import ScoreCircle from './ScoreCircle'
 const ResumeCard = ({ resume }: { resume: Resume }) => {
   return (
     <Link 
-      className="resume-card group animate-in fade-in slide-in-from-bottom-6 duration-1000 my-1" 
       to={`/resume/${resume.id}`}
+      className="group relative flex flex-col h-[480px] w-full p-5 rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 hover:shadow-[0_30px_60px_-20px_rgba(96,107,235,0.3)] hover:-translate-y-3"
     >
-      {/* Header Area */}
-      <div className="flex flex-row justify-between items-start gap-4 min-h-[90px]">
-        <div className="flex flex-col gap-1 overflow-hidden">
-          <h2 className="!text-black font-extrabold text-2xl md:text-3xl tracking-tight truncate group-hover:text-[#606beb] transition-colors duration-300">
+      {/* Background Gradient Glow (Behind Card) */}
+      <div className="absolute -inset-1 bg-gradient-to-br from-[#606beb] to-fuchsia-500 rounded-[2.6rem] opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500" />
+
+      {/* 1. Header Area: Clean & Sharp */}
+      <div className="relative z-10 flex flex-row justify-between items-start gap-2 mb-4">
+        <div className="flex flex-col overflow-hidden">
+          <h2 className="text-xl font-black text-slate-900 tracking-tight truncate group-hover:text-[#606beb] transition-colors duration-300">
             {resume.companyName}
           </h2>
-          <h3 className="text-base md:text-lg font-medium text-gray-400 truncate uppercase tracking-wider">
+          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] truncate">
             {resume.jobTitle}
-          </h3>
+          </p>
         </div>
         
-        {/* Score Pop Effect */}
-        <div className="flex-shrink-0 transform transition-all duration-500 group-hover:scale-103 group-hover:rotate-2">
-          <ScoreCircle score={resume.feedback.overallScore} />
+        {/* Score Pop - Smaller for Grid scaling */}
+        <div className="relative flex-shrink-0 scale-90 group-hover:scale-100 transition-transform duration-500">
+            <div className="absolute inset-0 bg-[#606beb]/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+            <ScoreCircle score={resume.feedback.overallScore} />
         </div>
       </div>
 
-      {/* Main Content Area (The Image) */}
-      <div className="gradient-border flex-grow shadow-inner">
-        <div className="h-full w-full rounded-[1.4rem] overflow-hidden bg-white">
-          <img 
-            src={resume.imagePath} 
-            alt="Resume Preview" 
-            className="w-full h-full object-cover object-top transition-transform duration-1000 ease-out group-hover:scale-105"
-          />
-          
-          {/* Subtle light overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      {/* 2. Main Image: The "Focus" Piece */}
+      <div className="relative z-10 flex-grow rounded-[1.8rem] overflow-hidden bg-slate-50 border border-slate-100 shadow-inner">
+        <img 
+          src={resume.imagePath} 
+          alt="Preview" 
+          className="w-full h-full object-cover object-top transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+        />
+        
+        {/* Floating "Quick View" Overlay */}
+        <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+             <div className="px-5 py-2 bg-white rounded-full text-[11px] font-black text-black transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                OPEN ANALYSIS
+             </div>
         </div>
       </div>
       
-      {/* Interactive Footer (Dope Detail) */}
-      <div className="flex items-center justify-between pt-2">
-        <p className="text-[10px] font-mono text-gray-300 uppercase">Analysis Complete</p>
-        <span className="text-sm font-bold text-[#8E97C5] translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
-          DETAILS →
-        </span>
+      {/* 3. Footer: Interaction Details */}
+      <div className="relative z-10 flex items-center justify-between pt-4 px-1">
+        <div className="flex flex-col">
+            <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#606beb] animate-pulse" />
+                <p className="text-[9px] font-black text-slate-400 tracking-[0.1em] uppercase">Ready</p>
+            </div>
+            <p className="text-[11px] font-mono font-medium text-slate-500">ID: {resume.id.slice(0, 8)}</p>
+        </div>
+        
+        <div className="h-10 w-10 rounded-2xl bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:bg-[#606beb] group-hover:border-[#606beb] transition-all duration-300">
+            <svg 
+              className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+        </div>
       </div>
+
+      {/* Internal Glass Stroke (Adds depth) */}
+      <div className="absolute inset-0 rounded-[2.5rem] border border-white opacity-50 pointer-events-none" />
     </Link>
   )
 }
