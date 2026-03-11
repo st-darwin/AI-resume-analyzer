@@ -8,6 +8,10 @@ const Auth = () => {
   const location = useLocation()
   const next = location.search.split("next=")[1]
   const navigate = useNavigate()
+  const login = async()=>{
+    await auth.signIn()
+    navigate(next || "/")
+  }
 
   useEffect(()=>{
    if(auth.isAuthenticated) navigate(next)
@@ -34,9 +38,14 @@ const Auth = () => {
             ) : (
                 <>
                 {auth.isAuthenticated ? (
-                    <button className="auth-button" onClick={auth.signOut}><p className="text-sm">Log out</p></button>
+                    <button className="auth-button" onClick={() =>{
+                        auth.signOut();
+                        alert("You have been logged out")
+
+
+                    }}><p className="text-sm">Log out</p></button>
                 ) : (
-                    <button className="auth-button" onClick={auth.signIn}><p className="text-sm">Log in</p></button>
+                    <button className="auth-button" onClick={login} ><p className="text-sm">Log in</p></button>
                 )}
                 </>
             )}
