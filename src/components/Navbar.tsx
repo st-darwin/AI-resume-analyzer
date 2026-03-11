@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+
   return (
-    <nav className=" flex  m-auto rounded-full items-center justify-between  px-6 py-3 w-[95%] z-[100]">
+    <nav className="flex m-auto rounded-full items-center justify-between px-6 py-3 w-[95%] z-[100]">
       {/* Logo */}
       <Link to="/" className="z-[110]">
         <p className="text-2xl font-bold text-gradient tracking-tighter">NexaCV</p>
@@ -62,6 +63,14 @@ const Navbar = () => {
           className="text-2xl text-gray-300 hover:text-white font-semibold"
         >
          <h1>History</h1>
+        </Link>
+         
+          <Link 
+          to="/Auth" 
+          onClick={() => setIsOpen(false)}
+          className="text-2xl text-gray-300 hover:text-white font-semibold"
+        >
+         <h1>Log Out</h1>
         </Link>
       </div>
     </nav>
