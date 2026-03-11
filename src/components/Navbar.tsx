@@ -15,9 +15,11 @@ const Navbar = () => {
   {/* Desktop Links */}
 <div className="hidden md:flex items-center gap-10">
   {[
-    { name: 'Upload Resume', path: '/Upload' },
+    { name: 'Upload Resume ❤️', path: '/Upload' },
     { name: 'History', path: '/History' },
-    {name : 'Log Out' , path : '/Auth'}
+     {name: 'Build Resume 🚀' , path : '/ResumeBuilder'},
+    {name : 'Log Out ' , path : '/Auth'},
+   
   ].map((link) => (
     <Link
       key={link.path}
@@ -56,14 +58,22 @@ const Navbar = () => {
           onClick={() => setIsOpen(false)}
           className="text-2xl text-gray-300 hover:text-white font-semibold"
         >
-          <h1>Upload Resume</h1>
+          <h1>Upload Resume 🔥</h1>
         </Link>
         <Link 
           to="/History" 
           onClick={() => setIsOpen(false)}
           className="text-2xl text-gray-300 hover:text-white font-semibold"
         >
-         <h1>History</h1>
+         <h1>History🚀</h1>
+        </Link>
+
+             <Link 
+          to="/ResumeBuilder" 
+          onClick={() => setIsOpen(false)}
+          className="text-2xl text-gray-300 hover:text-white font-semibold"
+        >
+         <h1>Build a Resume..🚀</h1>
         </Link>
          
           <Link 
@@ -71,8 +81,11 @@ const Navbar = () => {
           onClick={() => setIsOpen(false)}
           className="text-2xl text-gray-300 hover:text-white font-semibold"
         >
-         <h1>Log Out</h1>
+         <h1>Log Out..</h1>
         </Link>
+
+   
+
       </div>
     </nav>
   );
