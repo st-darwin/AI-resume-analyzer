@@ -40,6 +40,9 @@ label {
 input {
   @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white;
 }
+input.form-input {
+  @apply p-0 rounded-xl inset-shadow-none;
+}
 
 textarea {
   @apply w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white;
@@ -75,7 +78,13 @@ form {
     @apply flex flex-row items-center gap-2 border border-gray-200 rounded-lg p-2 shadow-sm;
   }
   .auth-button {
-    @apply primary-gradient rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white;
+    @apply bg-blue-500/30 backdrop-blur-xl border-2 border-blue-400/60 rounded-full py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-3xl font-semibold text-white shadow-lg transition-all duration-300;
+    box-shadow: 0 0 20px 0 rgba(59, 130, 246, 0.2);
+  }
+  
+  .auth-button:hover {
+    @apply bg-blue-500/50 border-blue-300;
+    box-shadow: 0 0 30px 0 rgba(59, 130, 246, 0.3);
   }
   .main-section {
     @apply flex flex-col items-center gap-8 pt-12 mx-3 pb-5;
@@ -164,4 +173,10 @@ form {
   to {
     opacity: 1;
   }
+}
+
+.burger-menu{
+  padding: 0.5rem 0.8rem;
+  border: none;
+  
 }
