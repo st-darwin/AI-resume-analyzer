@@ -17,6 +17,7 @@ const Navbar = () => {
   {[
     { name: 'Upload Resume', path: '/Upload' },
     { name: 'History', path: '/History' },
+    {name : 'Log Out' , path : '/Auth'}
   ].map((link) => (
     <Link
       key={link.path}
