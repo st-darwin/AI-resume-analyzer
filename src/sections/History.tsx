@@ -12,7 +12,9 @@ const History = () => {
   useEffect(() => {
     const loadHistory = async () => {
       const raw = await kv.get("nexa_cv_history");
+      // if the data exsit in the kw, parse it and set it to the state, otherwise set history to an empty array
       if (raw) setHistory(JSON.parse(raw as string));
+      
       setLoading(false);
     };
     loadHistory();
@@ -48,15 +50,15 @@ const History = () => {
 
   if (history.length === 0) {
     return (
-      <main className='bg-[url("/images/bg-main.svg")] bg-cover min-h-screen pt-32'>
-        <div className="container mx-auto px-4 md:px-8">
+      <main className='bg-[url("/images/bg-main.svg")] bg-cover min-h-screen  pt-32'>
+        <div className="container mx-auto items-center justify-center mt-40 xl:mt-0 sm:mt-0  px-4 md:px-8">
           <div className="max-w-md mx-auto text-center">
             <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-500/10 border border-blue-500/20">
               <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <p className="text-xl font-bold text-white mb-2">No History Yet</p>
+            <h1 className="text-xl font-bold text-white mb-2">No History Yet</h1>
             <p className="text-gray-400 mb-8">Your resume scans will appear here once you upload and analyze your first resume.</p>
             <button
               onClick={() => navigate('/Upload')}
@@ -101,7 +103,7 @@ const History = () => {
               {history.length > 0 && (
                 <button
                   onClick={clearAllHistory}
-                  className="px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 rounded-lg transition-all duration-300 text-sm font-semibold border border-red-500/20"
+                  className=" hover:cursor-pointer px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 rounded-lg transition-all duration-300 text-sm font-semibold border border-red-500/20"
                 >
                   Clear All History
                 </button>
@@ -116,7 +118,7 @@ const History = () => {
           {history.map((item, index) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded-2xl transition-all duration-300 animate-in fade-in slide-in-from-top-4"
+              className=" hover:cursor-pointer  group relative overflow-hidden rounded-2xl transition-all duration-300 animate-in fade-in slide-in-from-top-4"
               style={{ animationDelay: `${index * 50}ms` }}
             >
               {/* Background with gradient */}
@@ -206,7 +208,7 @@ const History = () => {
                         deleteItem(item.id);
                       }
                     }}
-                    className="flex-shrink-0 p-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 transition-all duration-300 group/delete border border-red-500/20 hover:border-red-500/40"
+                    className=" hover:cursor-pointer flex-shrink-0 p-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 transition-all duration-300 group/delete border border-red-500/20 hover:border-red-500/40"
                     title="Delete this scan"
                   >
                     <svg className="w-5 h-5 group-hover/delete:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -229,3 +231,4 @@ const History = () => {
 };
 
 export default History;
+
