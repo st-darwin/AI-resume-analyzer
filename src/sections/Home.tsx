@@ -106,7 +106,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- THE BADGES SECTION --- */}
+      {/* --- THE OTHER SECTION --- */}
       <Badges />
       <Showcase/>
       <Reviews/>
@@ -132,3 +132,4 @@ const Home = () => {
 };
 
 export default Home;
+
