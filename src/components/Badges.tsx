@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const Badges = () => {
   const badgeData = [
@@ -107,5 +107,6 @@ const Badges = () => {
     </section>
   )
 }
+
 
 export default Badges
