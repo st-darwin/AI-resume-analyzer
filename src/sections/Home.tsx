@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { usePuterStore } from "../lib/puter";
 import Navbar from "../components/Navbar";
 import Badges from "../components/Badges";// Import the badges we made
+import Reviews from "../components/Reviews";
+import Showcase from "../components/Showcase";
 
 const Home = () => {
   const { auth } = usePuterStore();
@@ -103,8 +105,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- THE BADGES SECTION --- */}
+      {/* --- other comps --- */}
       <Badges />
+      <Showcase/>
+      <Reviews/>
 
 
 
@@ -126,4 +130,3 @@ const Home = () => {
 };
 
 export default Home;
-
