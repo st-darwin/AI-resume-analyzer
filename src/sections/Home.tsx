@@ -105,7 +105,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- other comps --- */}
+      {/* --- THE BADGES SECTION --- */}
       <Badges />
       <Showcase/>
       <Reviews/>
@@ -119,7 +119,7 @@ const Home = () => {
           <p className="text-slate-500 font-medium mb-10">Join 1,000+ developers tracking their success on NexaCV.</p>
           <button 
              onClick={() => navigate('/Upload')}
-             className="px-12 py-5 bg-blue-600 text-white font-black rounded-[2rem] shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all active:scale-95"
+             className="px-12  cursor-pointer py-5 bg-blue-600 text-white font-black rounded-[2rem] shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all active:scale-95"
           >
             Upload Now
           </button>
