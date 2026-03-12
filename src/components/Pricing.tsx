@@ -40,7 +40,7 @@ const Pricing = () => {
             </ul>
 
             <button 
-              onClick={() => navigate('/auth')}
+              onClick={() => navigate('/ResumeBuilder')}
               className="w-full py-5 border-2 border-slate-100 text-slate-900 font-black rounded-2xl hover:bg-slate-50 transition-all active:scale-95"
             >
               Get Started
