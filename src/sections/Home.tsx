@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Badges from "../components/Badges";// Import the badges we made
 import Reviews from "../components/Reviews";
 import Showcase from "../components/Showcase";
+import Pricing from "../components/Pricing";
 
 const Home = () => {
   const { auth } = usePuterStore();
@@ -109,6 +110,7 @@ const Home = () => {
       <Badges />
       <Showcase/>
       <Reviews/>
+      <Pricing/>
 
 
 
