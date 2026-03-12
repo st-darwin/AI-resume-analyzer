@@ -95,7 +95,7 @@ const Showcase = () => {
         <div className="mt-20 text-center">
            <button 
              onClick={() => navigate('/ResumeBuilder')}
-             className="px-12 py-5 bg-slate-900 text-white font-black rounded-[2rem] hover:bg-blue-600 transition-all duration-300 shadow-xl shadow-slate-200 active:scale-95"
+             className=" cursor-pointer px-12 py-5 bg-slate-900 text-white font-black rounded-[2rem] hover:bg-blue-600 transition-all duration-300 shadow-xl shadow-slate-200 active:scale-95"
            >
              Browse All Templates
            </button>
