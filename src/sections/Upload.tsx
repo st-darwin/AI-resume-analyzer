@@ -19,12 +19,10 @@ const Upload = () => {
     setFile(file);
   };
 
-  // --- THE SAVE LOGIC ---
   const saveToHistory = async (fileName: string, score: number, feedback: any) => {
     try {
       const raw = await kv.get('nexa_cv_history');
       const history = raw ? JSON.parse(raw as string) : [];
-
       const newEntry = {
         id: crypto.randomUUID(), 
         fileName,
@@ -32,7 +30,6 @@ const Upload = () => {
         feedback,
         timestamp: Date.now()
       };
-
       const updated = [newEntry, ...history].slice(0, 10);
       await kv.set('nexa_cv_history', JSON.stringify(updated));
     } catch (e) {
@@ -52,7 +49,6 @@ const Upload = () => {
     file: File;
   }) => {
     if (!file) return;
-
     if (file.type !== "application/pdf") {
       alert("Please upload a PDF file only.");
       return;
@@ -61,7 +57,6 @@ const Upload = () => {
     try {
       setIsProcessing(true);
       setStatusText("Uploading the PDF...");
-
       const uploadResult = await fs.upload([file]);
       const uploadedFile = Array.isArray(uploadResult) ? uploadResult[0] : uploadResult;
 
@@ -82,7 +77,7 @@ const Upload = () => {
         jobTitle,
         jobDescription,
         companyName,
-        feedback: {} as any, // Initialize as object
+        feedback: {} as any,
       };
 
       setStatusText("Analyzing resume...");
@@ -91,7 +86,6 @@ const Upload = () => {
         prepareInstructions({ jobTitle, jobDescription })
       );
 
-      // Extract text content safely
       const feedbackText =
         typeof feedback?.message?.content === "string"
           ? feedback.message.content
@@ -103,14 +97,10 @@ const Upload = () => {
         const cleanedJson = feedbackText.replace(/```json|```/g, "").trim();
         data.feedback = JSON.parse(cleanedJson);
       } catch {
-        data.feedback = { raw: feedbackText }; // fallback
+        data.feedback = { raw: feedbackText };
       }
 
-      // Save the main record for the Results page
       await kv.set(`resume:${UUID}`, JSON.stringify(data));
-
-      // --- THE FIX: Save to History before navigating ---
-      // We grab the score from our parsed data (defaulting to 0 if the AI didn't provide one)
       const finalScore = data.feedback.score || 0;
       await saveToHistory(file.name, finalScore, data.feedback);
 
@@ -123,103 +113,123 @@ const Upload = () => {
     }
   };
 
-  // ... rest of your handleSubmit and return code remains the same ...
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!file) {
       alert("Please upload a PDF file.");
       return;
     }
-
     const formData = new FormData(e.currentTarget);
-    const companyName = (formData.get("company-name") as string) || "";
-    const jobTitle = (formData.get("job-title") as string) || "";
-    const jobDescription = (formData.get("job-description") as string) || "";
-
-    handleAnalyze({ companyName, jobTitle, jobDescription, file });
+    handleAnalyze({ 
+      companyName: formData.get("company-name") as string, 
+      jobTitle: formData.get("job-title") as string, 
+      jobDescription: formData.get("job-description") as string, 
+      file 
+    });
   };
 
   return (
-    <main className='bg-[url("/images/bg-main.svg")] bg-cover min-h-screen'>
+    <main className="min-h-screen bg-[#FDFDFD] text-slate-900 selection:bg-blue-100">
       <Navbar />
 
-      <section className="main-section max-w-3xl mx-auto px-4 py-10">
-        <div className="page-heading text-center">
-          <h1 className="text-4xl font-bold mb-3">
-            Smart Feedback for Your Dream Job
-          </h1>
+      <section className="relative max-w-5xl mx-auto px-6 py-20 lg:py-28">
+        {/* Soft Ambient Background Elements */}
+        <div className="absolute top-10 left-10 w-80 h-80 bg-blue-100/50 rounded-full blur-[100px]" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-indigo-100/50 rounded-full blur-[100px]" />
 
-          {isProcessing ? (
-            <>
-              <h2 className="text-lg mb-5">{statusText}</h2>
-              <img
-                src="/images/resume-scan.gif"
-                className="w-full max-w-md mx-auto"
-                alt="Processing"
-              />
-            </>
-          ) : (
-            <h2 className="text-lg mb-5">
-              Drop your PDF resume for an ATS score and improvement tips
-            </h2>
-          )}
+        <div className="relative z-10">
+          <header className="text-center mb-16 space-y-4">
+            <div className="inline-block px-4 py-1.5 mb-2 rounded-full bg-blue-50 border border-blue-100 shadow-sm">
+              <p className="text-[11px] font-bold text-blue-600 uppercase tracking-[0.2em]">Nexa AI Powered</p>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-black tracking-tight text-slate-900 leading-[1.1]">
+              Get your <span className="text-blue-600">Resume</span> <br /> 
+              Recruiter-Ready.
+            </h1>
+            <p className="text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
+              {isProcessing 
+                ? "Dissecting your career history to find the perfect match..." 
+                : "Drop your CV below to get an instant ATS score and data-driven feedback."
+              }
+            </p>
+          </header>
 
-          {!isProcessing && (
-            <form
-              id="upload-form"
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-4 mt-5"
-            >
-              <div className="form-div flex flex-col">
-                <label className="mb-1 font-medium">Company Name</label>
-                <input
-                  type="text"
-                  name="company-name"
-                  placeholder="Company name"
-                  className="p-2 rounded hover:border"
-                  required
-                />
-              </div>
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] border border-slate-100 overflow-hidden transition-all duration-500">
+              {isProcessing ? (
+                <div className="p-16 flex flex-col items-center justify-center text-center">
+                  <div className="relative mb-10">
+                    <div className="absolute inset-[-10px] rounded-full bg-blue-50 animate-ping opacity-75"></div>
+                    <div className="relative bg-white p-6 rounded-full shadow-lg border border-slate-50">
+                      <img src="/images/resume-scan.gif" className="w-24 h-24 object-cover" alt="Processing" />
+                    </div>
+                  </div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-2">{statusText}</h2>
+                  <p className="text-slate-400 font-medium">Sit tight, this won't take long.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="p-10 md:p-14 space-y-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Target Company</label>
+                      <input
+                        type="text"
+                        name="company-name"
+                        placeholder="Google, Stripe, etc."
+                        className="w-full p-4 rounded-2xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-500/5 focus:border-blue-500/40 transition-all placeholder:text-slate-300"
+                        required
+                      />
+                    </div>
 
-              <div className="form-div flex flex-col">
-                <label className="mb-1 font-medium">Job Title</label>
-                <input
-                  type="text"
-                  name="job-title"
-                  placeholder="Job Title"
-                  className="p-2 rounded hover:border"
-                  required
-                />
-              </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Desired Role</label>
+                      <input
+                        type="text"
+                        name="job-title"
+                        placeholder="Frontend Engineer"
+                        className="w-full p-4 rounded-2xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-500/5 focus:border-blue-500/40 transition-all placeholder:text-slate-300"
+                        required
+                      />
+                    </div>
+                  </div>
 
-              <div className="form-div flex flex-col">
-                <label className="mb-1 font-medium">Job Description</label>
-                <textarea
-                  rows={5}
-                  name="job-description"
-                  placeholder="Job Description"
-                  className="p-2 rounded hover:border"
-                  required
-                />
-              </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Job Description</label>
+                    <textarea
+                      rows={3}
+                      name="job-description"
+                      placeholder="Paste requirements here to match your CV skills..."
+                      className="w-full p-5 rounded-2xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-4 focus:ring-blue-500/5 focus:border-blue-500/40 transition-all resize-none placeholder:text-slate-300"
+                      required
+                    />
+                  </div>
 
-              <div className="form-div flex flex-col">
-                <label className="mb-1 font-medium">
-                  Upload Resume (PDF only)
-                </label>
-                <FileUploader file={file} onFileSelect={handleFileSelect} />
-              </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Your Resume</label>
+                    <div className="p-1.5 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 hover:border-blue-300 transition-colors">
+                      <FileUploader file={file} onFileSelect={handleFileSelect} />
+                    </div>
+                  </div>
 
-              <button
-                className="primary-button bg-blue-600 text-white p-3 rounded-full mt-2 hover:bg-blue-700 transition"
-                type="submit"
-              >
-                Analyze Resume
-              </button>
-            </form>
-          )}
+                  <button
+                    type="submit"
+                    className="group relative w-full bg-slate-900 text-white font-bold py-5 rounded-2xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.2)] hover:scale-103 duration-1000 active:scale-80 transition-all duration-300 active:scale-[0.98] overflow-hidden"
+                  >
+                    <span className="relative z-10 flex items-center justify-center gap-2 tracking-wide">
+                      Generate Analysis
+                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </button>
+                </form>
+              )}
+            </div>
+            
+            <p className="text-center text-slate-400 text-xs mt-8 font-medium">
+              Your data is processed securely via Nexa AI.
+            </p>
+          </div>
         </div>
       </section>
     </main>
