@@ -551,9 +551,9 @@ const ResumeBuilder = () => {
 
                 {/* 2. PREVIEW SECTION */}
                 <section className='w-full md:w-[55%] flex flex-col order-1 md:order-2 mb-10 md:mb-0'>
-                    <div className="flex justify-between items-center mb-6 md:mb-10">
+                    <div className="flex justify-around items-center mb-6 md:mb-10">
                         <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">Live System View</span>
-                        <h1 className='text-slate-200 text-2xl md:text-4xl font-black text-right uppercase'>Preview</h1>
+                        <h1 className='text-slate-200 text-xl md:text-4xl font-black text-right uppercase'>Preview</h1>
                     </div>
                     {/* Added overflow-x-auto so the resume doesn't break the screen on small phones */}
                     <div className="md:sticky md:top-6 flex justify-center w-full overflow-hidden rounded-xl shadow-lg md:shadow-none">
