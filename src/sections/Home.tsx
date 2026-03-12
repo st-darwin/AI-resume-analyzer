@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePuterStore } from "../lib/puter";
 import Navbar from "../components/Navbar";
-import Badges from "../components/Badges"; // Import the badges we made
+import Badges from "../components/Badges";// Import the badges we made
 
 const Home = () => {
   const { auth } = usePuterStore();
