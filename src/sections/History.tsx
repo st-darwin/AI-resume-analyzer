@@ -13,7 +13,7 @@ const History = () => {
     const loadHistory = async () => {
       const raw = await kv.get("nexa_cv_history");
       if (raw) setHistory(JSON.parse(raw as string));
-      // Artificial delay to appreciate the smooth loader (optional)
+     // delay
       setTimeout(() => setLoading(false), 800);
     };
     loadHistory();
@@ -233,3 +233,4 @@ const History = () => {
 };
 
 export default History;
+
