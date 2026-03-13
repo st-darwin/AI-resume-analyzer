@@ -8,6 +8,10 @@ import { useEffect } from 'react'
 import Resume from './sections/resume'
 import History from './sections/History'
 import ResumeBuilder from './sections/ResumeBuilder'
+import AIResumeBuilder from './sections/AIResumeBuilder'
+import Dashboard from './sections/Dashboard'
+//import ProtectedRoute from './components/ProtectedRoute'
+//import CareerMap from './components/CareerMap'
 
 const App = () => {
   const init = usePuterStore((state) => state.init)
@@ -25,6 +29,11 @@ const App = () => {
       <Route path="/resume/:id" element={<Resume />} />
       <Route path='/History' element={<History /> } />
       <Route path='/ResumeBuilder' element={<ResumeBuilder />} />
+
+      
+      <Route path='/AIResumeBuilder' element={<AIResumeBuilder />} />
+      <Route path='/Dashboard' element={<Dashboard />} />
+
       
    
     </Routes>
