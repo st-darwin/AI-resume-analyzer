@@ -13,7 +13,7 @@ const History = () => {
     const loadHistory = async () => {
       const raw = await kv.get("nexa_cv_history");
       if (raw) setHistory(JSON.parse(raw as string));
-     // delay
+      // Artificial delay to appreciate the smooth loader (optional)
       setTimeout(() => setLoading(false), 800);
     };
     loadHistory();
@@ -36,7 +36,7 @@ const History = () => {
     return (
       <main className="bg-[#FDFDFD] min-h-screen pt-28">
         <Navbar />
-        <div className="container mx-auto px-6 md:px-8 max-w-5xl">
+        <div className="container mt-30 mx-auto px-6 md:px-8 max-w-5xl">
           {/* Header Skeleton */}
           <div className="mb-16 animate-pulse">
             <div className="h-6 w-32 bg-slate-100 rounded-full mb-4" />
@@ -82,6 +82,7 @@ const History = () => {
     return (
       <main className="bg-[#FDFDFD] min-h-screen pt-32 selection:bg-blue-100">
         <Navbar />
+
         <div className="container mx-auto px-6 mt-20">
           <div className="max-w-md mx-auto text-center">
             <div className="mb-8 inline-flex items-center justify-center w-24 h-24 rounded-[2rem] bg-slate-50 border border-slate-100 shadow-sm">
@@ -111,7 +112,7 @@ const History = () => {
       <Navbar />
 
       {/* Background Decorative Glows */}
-      <div className="fixed top-20  left-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[120px] -z-10" />
+      <div className="  fixed top-20  left-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[120px] -z-10" />
       <div className="fixed bottom-0 right-0 w-[400px] h-[400px] bg-indigo-50/30 rounded-full blur-[100px] -z-10" />
 
       <div className="container mx-auto px-6 md:px-8 max-w-5xl">
@@ -119,7 +120,7 @@ const History = () => {
         <div className="mb-16">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100  mt-7 mb-7">
+              <div className=" mt-20 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100  mt-7 mb-7">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
@@ -159,7 +160,7 @@ const History = () => {
                 
                 {/* Left: Info Section */}
                 <div 
-                  onClick={() => navigate(`/resume/${item.id}`)}
+                  onClick={() => navigate(`/history`)}
                   className="flex-1 cursor-pointer flex items-center gap-6 w-full p-4"
                 >
                   <div className="relative flex-shrink-0">
@@ -233,4 +234,3 @@ const History = () => {
 };
 
 export default History;
-
