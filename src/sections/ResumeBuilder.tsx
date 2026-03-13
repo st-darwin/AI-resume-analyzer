@@ -484,14 +484,12 @@ const ResumeBuilder = () => {
    return (
         <div className='bg-[#f8fafc] bg-[url("/images/bg-light-mesh.svg")] bg-fixed bg-cover min-h-screen p-4 md:p-6'> 
             <Navbar />
-            
-            {/* Changed flex-col to flex-col-reverse or kept as col, 
-                but ensured items don't overlap */}
-            <div className='max-w-7xl mx-auto flex flex-col mt-8 md:flex-col xl:flex-row  gap-10 items-start'>
+   
+            <div className='max-w-7xl  mx-auto flex flex-col mt-40 md:flex-col xl:flex-row  gap-10 items-start'>
                 
                 {/* 1. INPUT SECTION */}
                 {/* Removed 'sticky' for mobile, only added 'md:sticky' */}
-                <section className='w-full md:w-full xl:w-[45%] xl:sticky md:top-6 order-2 md:order-1'>
+                <section className='w-full md:w-full xl:w-[45%] xl:sticky  md:top-6 order-2 md:order-1'>
                     <div className="mb-8 px-2">
                         <h1 className='text-3xl md:text-4xl font-black text-slate-900 tracking-tighter'>RESUME_BUILDER</h1>
                         <p className="text-[#606beb] text-xs font-bold tracking-widest uppercase mt-3 italic"> Powered by NexaCV </p>
