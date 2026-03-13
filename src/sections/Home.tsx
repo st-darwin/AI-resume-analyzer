@@ -11,6 +11,7 @@ import DemoModal from "../components/Demo";
 import Process from "../components/Process";
 import AIBuilderFeature from "../components/AIBuilder";
 import CareerIntelligence from "../components/Extra";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const { auth } = usePuterStore();
@@ -127,7 +128,7 @@ const Home = () => {
 
 
 
-      {/* --- FOOTER CTA --- */}
+     
       <section className="py-32 bg-[#F8FAFC] border-t border-slate-100">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">Ready to beat the bots?</h2>
@@ -140,6 +141,11 @@ const Home = () => {
           </button>
         </div>
       </section>
+
+
+
+
+      <Footer />
     </main>
   );
 };
