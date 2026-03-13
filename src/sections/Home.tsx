@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePuterStore } from "../lib/puter";
 import Navbar from "../components/Navbar";
@@ -7,9 +7,15 @@ import Reviews from "../components/Reviews";
 import Showcase from "../components/Showcase";
 import Pricing from "../components/Pricing";
 
+import DemoModal from "../components/Demo";
+import Process from "../components/Process";
+import AIBuilderFeature from "../components/AIBuilder";
+import CareerIntelligence from "../components/Extra";
+
 const Home = () => {
   const { auth } = usePuterStore();
   const navigate = useNavigate();
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
 
   useEffect(() => {
     if (!auth.isAuthenticated) navigate("/auth?next=/");
@@ -106,11 +112,18 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- THE OTHER SECTION --- */}
+      {/* --- THE BADGES SECTION --- */}
       <Badges />
       <Showcase/>
+      <Process onOpenDemo={() => setIsDemoOpen(true)} />
+      <DemoModal 
+        isOpen={isDemoOpen} 
+        onClose={() => setIsDemoOpen(false)} 
+      />
+      <AIBuilderFeature/>
       <Reviews/>
       <Pricing/>
+      <CareerIntelligence/>
 
 
 
@@ -132,4 +145,3 @@ const Home = () => {
 };
 
 export default Home;
-
