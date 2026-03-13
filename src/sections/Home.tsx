@@ -58,10 +58,10 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row items-center gap-5 pt-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
                 <button
                   onClick={() => navigate('/Upload')}
-                  className="group relative px-10 py-5 bg-slate-900 text-white font-black rounded-[2rem] transition-all duration-500 shadow-[0_20px_40px_-10px_rgba(15,23,42,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] hover:bg-blue-600 active:scale-95 w-full sm:w-auto overflow-hidden"
+                  className=" group relative px-10 py-5 bg-slate-900 text-white font-black rounded-[2rem] transition-all duration-500 shadow-[0_20px_40px_-10px_rgba(15,23,42,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] hover:bg-blue-600 active:scale-95 w-full sm:w-auto overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                  <span className="relative flex items-center justify-center gap-3 text-lg">
+                  <span className=" cursor-pointer relative flex items-center justify-center gap-3 text-lg">
                     Get Started Free
                     <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -71,7 +71,7 @@ const Home = () => {
 
                 <button
                   onClick={() => navigate('/History')}
-                  className="px-10 py-5 bg-white text-slate-900 font-bold rounded-[2rem] border-2 border-slate-100 hover:border-blue-100 hover:bg-blue-50/30 transition-all duration-300 w-full sm:w-auto"
+                  className="  cursor-pointer px-10 py-5 bg-white text-slate-900 font-bold rounded-[2rem] border-2 border-slate-100 hover:border-blue-100 hover:bg-blue-50/30 transition-all duration-300 w-full sm:w-auto"
                 >
                   View History
                 </button>
