@@ -5,7 +5,13 @@ import {
   LogOut, ChevronRight, Sparkles, LayoutTemplate, 
   PenTool, ChevronDown 
 } from 'lucide-react';
-
+interface DropdownProps {
+  to: string;
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  theme: 'dark' | 'light';
+}
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProOpen, setIsProOpen] = useState(false);
@@ -158,8 +164,7 @@ const Navbar = () => {
   );
 };
 
-// Internal Sub-component for Dropdown Items
-const DropdownLink = ({ to, icon, title, desc, theme } : any ) => (
+const DropdownLink = ({ to, icon, title, desc, theme }: DropdownProps) => (
   <Link to={to} className="flex items-center gap-4 p-4 rounded-[2rem] hover:bg-slate-50 transition-all group">
     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm ${
       theme === 'dark' ? 'bg-slate-900 text-indigo-400' : 'bg-indigo-50 text-indigo-600'
