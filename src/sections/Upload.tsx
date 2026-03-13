@@ -19,7 +19,7 @@ const Upload = () => {
     setFile(file);
   };
 
-  const saveToHistory = async (fileName: string, score: number, feedback: any) => {
+  const saveToHistory = async (fileName: string, score: number, feedback: Feedback) => {
     try {
       const raw = await kv.get('nexa_cv_history');
       const history = raw ? JSON.parse(raw as string) : [];
