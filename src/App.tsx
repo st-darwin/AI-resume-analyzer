@@ -10,6 +10,7 @@ import History from './sections/History'
 import ResumeBuilder from './sections/ResumeBuilder'
 import AIResumeBuilder from './sections/AIResumeBuilder'
 import Dashboard from './sections/Dashboard'
+import Logout from './sections/Logout'
 //import ProtectedRoute from './components/ProtectedRoute'
 //import CareerMap from './components/CareerMap'
 
@@ -33,6 +34,7 @@ const App = () => {
       
       <Route path='/AIResumeBuilder' element={<AIResumeBuilder />} />
       <Route path='/Dashboard' element={<Dashboard />} />
+      <Route path='/logout' element={<Logout />} />
 
       
    
