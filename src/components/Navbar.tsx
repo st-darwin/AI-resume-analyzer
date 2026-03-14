@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Menu, X, Zap, History, FileUp, 
   LogOut, ChevronRight, Sparkles, LayoutTemplate, 
   PenTool, ChevronDown 
 } from 'lucide-react';
+
+
+import { usePuterStore } from '../lib/puter';
+
 interface DropdownProps {
   to: string;
   icon: React.ReactNode;
@@ -17,6 +21,18 @@ const Navbar = () => {
   const [isProOpen, setIsProOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const {auth} = usePuterStore()
+  const navigate = useNavigate()
+
+    const logout = async () => {
+    try {
+      await auth.signOut()
+      navigate("/Auth")
+    } catch (error) {
+      console.error("Login failed", error)
+    }
+  }
+  
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -28,6 +44,7 @@ const Navbar = () => {
     { name: 'Upload', path: '/Upload', icon: <FileUp className="w-4 h-4"/> },
     { name: 'Build', path: '/ResumeBuilder', icon: <PenTool className="w-4 h-4"/> },
     { name: 'History', path: '/History', icon: <History className="w-4 h-4"/> },
+     { name: 'Log out', path: '/logout', icon: <LogOut className="w-4 h-4"/> },
   ];
 
   return (
@@ -97,7 +114,7 @@ const Navbar = () => {
                     theme="dark"
                   />
                   <DropdownLink 
-                    to="/Templates" 
+                    to="/ResumeBuilder" 
                     icon={<LayoutTemplate className="w-5 h-5" />}
                     title="Pro Templates"
                     desc="Executive Grade Layouts"
@@ -110,7 +127,7 @@ const Navbar = () => {
               </div>
             </div>
             
-            <Link to="/Auth" className="ml-2 p-2.5 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
+            <Link to="/Auth" onClick={logout} className="ml-2 p-2.5 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
               <LogOut className="w-4 h-4" />
             </Link>
           </div>
