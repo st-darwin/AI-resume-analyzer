@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect  } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, X, Zap, History, FileUp, 
   LogOut, ChevronRight, Sparkles, LayoutTemplate, 
@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 
-import { usePuterStore } from '../lib/puter';
+
 
 interface DropdownProps {
   to: string;
@@ -21,18 +21,9 @@ const Navbar = () => {
   const [isProOpen, setIsProOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const {auth} = usePuterStore()
-  const navigate = useNavigate()
 
-    const logout = async () => {
-    try {
-      await auth.signOut()
-      navigate("/Auth")
-    } catch (error) {
-      console.error("Login failed", error)
-    }
-  }
   
+
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -127,7 +118,8 @@ const Navbar = () => {
               </div>
             </div>
             
-            <Link to="/Auth" onClick={logout} className="ml-2 p-2.5 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
+            <Link to="/logout"
+         className="ml-2 p-2.5 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all">
               <LogOut className="w-4 h-4" />
             </Link>
           </div>
