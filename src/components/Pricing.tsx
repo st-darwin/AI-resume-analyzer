@@ -82,7 +82,7 @@ const Pricing = () => {
                 {[
                   'Unlimited AI Scans',
                   'Deep Neural Feedback',
-                  'All NexaHub Pro Templates',
+                  'All NexaCV Pro Templates',
                   'Unlimited AI Generations',
                   'Keyword Injection Engine',
                   'Priority Parsing Support'
