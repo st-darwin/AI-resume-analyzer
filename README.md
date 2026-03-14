@@ -1,4 +1,4 @@
-https://nexacv-ai.vercel.app/
+https://nexacv-resume.vercel.app/
 
 🚀 Nexa CV: AI-Powered Resume Intelligence
 Nexa CV is a high-performance web application designed to bridge the gap between job seekers and Applicant Tracking Systems (ATS). Using the Puter SDK for cloud-native storage and AI analysis, it transforms static PDFs into actionable career insights.
