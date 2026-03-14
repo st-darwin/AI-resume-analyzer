@@ -12,6 +12,8 @@ import Process from "../components/Process";
 import AIBuilderFeature from "../components/AIBuilder";
 import CareerIntelligence from "../components/Extra";
 import Footer from "../components/Footer";
+import ResumeCard from "../components/ResumeCard";
+import { resumes } from "../constants";
 
 const Home = () => {
   const { auth } = usePuterStore();
@@ -123,6 +125,41 @@ const Home = () => {
       />
       <AIBuilderFeature/>
       <Reviews/>
+
+<div className="w-full max-w-4xl mx-auto px-6 py-16 text-center">
+  
+  {/* 1. The Limited Offer Badge */}
+  <div className="flex justify-center mb-6">
+    <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400">
+      Precision Grading Engine Active
+    </span>
+  </div>
+  
+  {/* 2. The High-Contrast Title */}
+  <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6">
+    Elite Feedback, <span className="text-blue-500">Perfect Scores.</span>
+  </h2>
+  
+  {/* 3. The Descriptive Subtext */}
+  <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed font-medium">
+    We’ve engineered a deep neural grading system to provide instant, actionable 
+    feedback on your resumes. No more guessing—just data-driven insights 
+    to help you land the role.
+  </p>
+
+  {/* Subtle Divider for the Grid below */}
+  <div className="mt-16 w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
+</div>
+
+{/* The Grid follows right after */}
+<div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {resumes.map((resume) => (
+    <ResumeCard key={resume.id} resume={resume} />
+  ))}
+</div>
+
+
+
       <Pricing/>
       <CareerIntelligence/>
 
