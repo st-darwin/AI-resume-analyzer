@@ -82,9 +82,9 @@ const Navbar = () => {
               className="relative z-[110]"
               onClick={() => setIsProOpen((prev) => !prev)}
             >
-              <button className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-[13px] font-black tracking-wide transition-all duration-500 shadow-sm border ${
+              <button className={` cursor-pointer flex items-center gap-2 px-6 py-2.5 rounded-full text-[13px] font-black tracking-wide transition-all duration-500 shadow-sm border ${
                 isProOpen 
-                ? 'bg-slate-900 border-slate-900 text-white translate-y-[-2px] shadow-xl shadow-slate-200' 
+                ? ' bg-slate-900 border-slate-900 text-white translate-y-[-2px] shadow-xl shadow-slate-200' 
                 : 'bg-white border-slate-200 text-indigo-600 hover:border-indigo-200'
               }`}>
                 Expert Suite
