@@ -35,7 +35,7 @@ const Navbar = () => {
     { name: 'Upload', path: '/Upload', icon: <FileUp className="w-4 h-4"/> },
     { name: 'Build', path: '/ResumeBuilder', icon: <PenTool className="w-4 h-4"/> },
     { name: 'History', path: '/History', icon: <History className="w-4 h-4"/> },
-     { name: 'Log out', path: '/logout', icon: <LogOut className="w-4 h-4"/> },
+    
   ];
 
   return (
