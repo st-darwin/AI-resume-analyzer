@@ -35,7 +35,7 @@ const Navbar = () => {
     { name: 'Upload', path: '/Upload', icon: <FileUp className="w-4 h-4"/> },
     { name: 'Build', path: '/ResumeBuilder', icon: <PenTool className="w-4 h-4"/> },
     { name: 'History', path: '/History', icon: <History className="w-4 h-4"/> },
-    
+     
   ];
 
   return (
@@ -80,8 +80,7 @@ const Navbar = () => {
             {/* PRO DROPDOWN TRIGGER */}
             <div 
               className="relative z-[110]"
-              onMouseEnter={() => setIsProOpen(true)}
-              onMouseLeave={() => setIsProOpen(false)}
+              onClick={() => setIsProOpen((prev) => !prev)}
             >
               <button className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-[13px] font-black tracking-wide transition-all duration-500 shadow-sm border ${
                 isProOpen 
