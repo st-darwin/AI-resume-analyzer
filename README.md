@@ -50,7 +50,7 @@ Architecture Highlights
 
 The app utilizes a Zero-Server approach. All logic—from file uploading to AI processing—happens directly in the browser via the Puter SDK, ensuring low latency and high privacy.
 -----------------------------------------------
-Developed by Darwin ❤️ (Code with Darwin)
+Developed by Darwin (CEO of NexaEcosystem) 🚀
 
 -----------------------------------------------
 
