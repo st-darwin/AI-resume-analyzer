@@ -73,7 +73,7 @@ const Logout = () => {
           {/* Minimalist Footer Grid */}
           <div className="mt-14 pt-8 border-t border-white/[0.03] grid grid-cols-3 gap-4 items-center">
             <div className="flex flex-col gap-1">
-              <span className="text-[9px] font-mono uppercase text-zinc-700 tracking-widest">Client</span>
+              <span className="text-[9px] font-mono uppercase text-zinc-700 tracking-widest">Developer</span>
               <span className="text-[11px] font-medium text-zinc-500">Darwin_10x</span>
             </div>
             <div className="flex flex-col gap-1 items-center">
@@ -85,7 +85,7 @@ const Logout = () => {
             </div>
             <div className="flex flex-col gap-1 items-end">
               <span className="text-[9px] font-mono uppercase text-zinc-700 tracking-widest">Node</span>
-              <span className="text-[11px] font-medium text-zinc-500 italic text-right">Lagos_NG</span>
+              <span className="text-[11px] font-medium text-zinc-500 italic text-right">Nexa Resume</span>
             </div>
           </div>
         </div>
