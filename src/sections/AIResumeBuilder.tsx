@@ -3,8 +3,8 @@ import { jsPDF } from 'jspdf';
 import { usePuterStore } from '../lib/puter';
 import Navbar from '../components/Navbar';
 import {  FileText, Download, Zap, User, Mail, Briefcase } from 'lucide-react';
-
-const NexaCV = () => {
+import { parseMarkdownToJson } from '../lib/utils';
+const AIResumeBuilder = () => {
   const puter = usePuterStore();
   const [formData, setFormData] = useState({ fullName: '', email: '', role: '', experience: '' });
   const [aiResult, setAiResult] = useState<{summary: string, bullets: string[]} | null>(null);
@@ -15,13 +15,16 @@ const NexaCV = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleGenerate = async () => {
+ const handleGenerate = async () => {
     if (!formData.experience || !formData.role) return;
+    
     setIsGenerating(true);
-    setAiResult(null); // Clear previous to show skeleton
+    setAiResult(null);
+     const apiKey = import.meta.env.VITE_DEEPSEEK_API_KEY;
 
-   const sophisticatedPrompt = `
+ 
+
+    const sophisticatedPrompt = `
       Act as a Tier-1 Executive Resume Strategist. 
       Analyze the following raw data for a ${formData.role} role:
       
@@ -29,29 +32,55 @@ const NexaCV = () => {
       ${formData.experience}
 
       TASK:
-      1. Write a 8-8 sentence "Strategic Profile" (summary) that is punchy, high-level, and uses industry-specific power verbs. Focus on "Value Add" rather than just tasks.
-      2. Write 7-8 detailed "Professional Milestones" (bullets). Each bullet should reflect a significant achievement or responsibility, emphasizing impact, scale, and technical complexity.
-         - Use the Google X-Y-Z formula: "Accomplished [X] as measured by [Y], by doing [Z]".
-         - Ensure each bullet is at least 25-35 words long.
-         - Focus on quantifiable metrics, scale, and technical complexity.
+      1. Write a 8-8 sentence "Strategic Profile" (summary) that is punchy, high-level, and uses industry-specific power verbs.
+      2. Write 7-8 detailed "Professional Milestones" (bullets) using the Google X-Y-Z formula.
 
       Return ONLY a valid JSON object:
       {
-        "summary": "Detailed, multi-sentence executive summary...",
-        "bullets": ["Lengthy milestone 1...", "Lengthy milestone 2...", "etc"]
+        "summary": "...",
+        "bullets": ["...", "..."]
       }
-    `;; // (Keep your existing prompt here)
+    `;
 
     try {
-      const response = await puter.ai.chat(sophisticatedPrompt);
-      if (response) {
-        const result = JSON.parse(response.toString());
-        setAiResult(result);
+      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: "anthropic/claude-3-haiku", // Or "deepseek/deepseek-chat"
+          messages: [
+            { 
+              role: "system", 
+              content: "You are a helpful career assistant. Output only valid JSON. No markdown." 
+            },
+            { role: "user", content: sophisticatedPrompt }
+          ],
+          response_format: { type: 'json_object' }
+        })
+      });
+
+      if (!response.ok) throw new Error("AI Request Failed");
+
+      const data = await response.json();
+      const rawText = data.choices[0].message.content;
+
+      // Use the same parsing logic from your Travel app
+      let result;
+      try {
+        result = JSON.parse(rawText);
+      } catch {
+        result = parseMarkdownToJson(rawText);
       }
-    } catch (e) { 
-      console.error("Synthesis Error:", e); 
-    } finally { 
-      setIsGenerating(false); 
+
+      setAiResult(result);
+    } catch (e) {
+      console.error("Synthesis Error:", e);
+      alert("Failed to generate resume. Please check your connection.");
+    } finally {
+      setIsGenerating(false);
     }
   };
 
@@ -267,4 +296,4 @@ const NexaCV = () => {
   );
 };
 
-export default NexaCV;
+export default AIResumeBuilder;
