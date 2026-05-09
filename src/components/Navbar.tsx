@@ -2,8 +2,8 @@ import { useState, useEffect  } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, X, Zap, History, FileUp, 
-  LogOut, ChevronRight, Sparkles, LayoutTemplate, 
-  PenTool, ChevronDown 
+  LogOut, ChevronRight,  LayoutTemplate, 
+  PenTool, ChevronDown  , BrainCircuit
 } from 'lucide-react';
 
 
@@ -37,6 +37,10 @@ const Navbar = () => {
     { name: 'History', path: '/History', icon: <History className="w-4 h-4"/> },
      
   ];
+  const shortlink =[
+    {name : "Logout" , path : '/logout' , icon : <LogOut className="w-4 h-4"/>}
+  
+  ]
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-4 md:px-8 ${
@@ -51,8 +55,8 @@ const Navbar = () => {
           
           {/* --- LOGO --- */}
           <Link to="/" className="group flex items-center gap-2.5 z-[110]">
-            <div className="w-9 h-9 bg-indigo-600 rounded-[12px] flex items-center justify-center shadow-lg shadow-indigo-200 group-hover:rotate-[10deg] transition-all duration-500">
-              <Sparkles className="w-5 h-5 text-white fill-white/20" />
+            <div className="w-9 h-9  rounded-[12px] flex items-center justify-center shadow-lg shadow-indigo-200  transition-all duration-500">
+              <BrainCircuit className="w-5 h-5  fill-white/20" />
             </div>
             <p className="text-xl font-black text-slate-900 tracking-tighter uppercase">
               Nexa<span className="text-indigo-600">CV</span>
@@ -84,9 +88,11 @@ const Navbar = () => {
             >
               <button className={` cursor-pointer flex items-center gap-2 px-6 py-2.5 rounded-full text-[13px] font-black tracking-wide transition-all duration-500 shadow-sm border ${
                 isProOpen 
-                ? ' bg-slate-900 border-slate-900 text-white translate-y-[-2px] shadow-xl shadow-slate-200' 
+                ? 'bg-slate-900 border-slate-900 text-white translate-y-[-2px] shadow-xl shadow-slate-200' 
                 : 'bg-white border-slate-200 text-indigo-600 hover:border-indigo-200'
-              }`}>
+              }`}
+              
+              >
                 Expert Suite
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-500 ${isProOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -126,7 +132,7 @@ const Navbar = () => {
           {/* --- MOBILE TOGGLE --- */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden relative z-[110] w-12 h-12 flex items-center justify-center rounded-2xl transition-all duration-500 ${
+            className={`md:hidden fixed relative z-[110] w-12 h-12 flex items-center justify-center rounded-2xl transition-all duration-500 ${
               isOpen ? 'bg-slate-900 text-white rotate-90 shadow-2xl' : 'bg-white border border-slate-200 text-slate-900 shadow-sm'
             }`}
           >
@@ -152,6 +158,23 @@ const Navbar = () => {
                 <ChevronRight className="w-5 h-5 text-slate-300" />
               </Link>
             ))}
+
+                  {shortlink.map(item => (
+              <Link key={item.name} to={item.path} onClick={() => setIsOpen(false)} className="flex items-center justify-between p-5 rounded-[2rem] bg-white border border-slate-100 shadow-sm active:scale-95 transition-transform">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600">{item.icon}</div>
+                  <span className="text-base font-black text-slate-800 tracking-tight">{item.name}</span>
+                </div>
+                <ChevronRight className="w-5 h-5 text-slate-300" />
+              </Link>
+            ))}
+              <Link to="/" onClick={()=> setIsOpen(false)} className="flex items-center justify-between p-5 rounded-[2rem] bg-white border border-slate-100 shadow-sm active:scale-95 transition-transform">
+              <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-600">{<X/>}</div>
+                  <span className="text-base font-black text-slate-800 tracking-tight">Close Menu</span>
+                </div>
+                <ChevronRight className="w-5 h-5 text-slate-300" />
+              </Link>
           </div>
           
           <div className="space-y-4">
@@ -165,6 +188,9 @@ const Navbar = () => {
                   <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Neural Analysis</p>
                 </div>
             </Link>
+            
+           
+
           </div>
         </div>
       </div>
