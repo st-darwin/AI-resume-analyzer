@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 import { usePuterStore } from "../lib/puter";
 import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 const History = () => {
   const { kv } = usePuterStore();
   const navigate = useNavigate();
   const [history, setHistory] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+ 
 
   useEffect(() => {
     const loadHistory = async () => {
@@ -160,7 +162,7 @@ const History = () => {
                 
                 {/* Left: Info Section */}
                 <div 
-                  onClick={() => navigate(`/history`)}
+                 
                   className="flex-1 cursor-pointer flex items-center gap-6 w-full p-4"
                 >
                   <div className="relative flex-shrink-0">
@@ -173,9 +175,11 @@ const History = () => {
                   </div>
 
                   <div className="min-w-0">
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300 truncate">
+                   <Link to={`/resume/${item.id}`} className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300 truncate">
+                       <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-300 truncate">
                       {item.fileName}
                     </h3>
+                    </Link>
                     <div className="flex items-center gap-3 mt-1.5">
                       <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                         {new Date(item.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
