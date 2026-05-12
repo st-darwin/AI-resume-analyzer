@@ -96,7 +96,7 @@ const CareerIntelligence = () => {
 
             <p className="text-lg text-slate-500 font-medium leading-relaxed max-w-xl">
               NexaCV doesn't just scan words; it decodes your technical DNA. 
-              We map your specific stack against global hiring trends to show you exactly where you'll dominate.
+              We map your specific stack against global hiring trends to show you exactly where you'll dominate (Feature not available).
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 pb-4">
@@ -120,7 +120,7 @@ const CareerIntelligence = () => {
             <div className="pt-6">
               <button 
                 onClick={() => navigate('/Dashboard', { state: { triggerAnalysis: true } })}
-                className="group px-10 py-5 bg-slate-900 text-white font-black rounded-2xl hover:bg-blue-600 transition-all active:scale-95 shadow-2xl shadow-slate-200 flex items-center gap-4"
+                className="group cursor-pointer px-10 py-5 bg-slate-900 text-white font-black rounded-2xl hover:bg-blue-600 transition-all active:scale-95 shadow-2xl shadow-slate-200 flex items-center gap-4"
               >
                 Explore Your Career Map
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
