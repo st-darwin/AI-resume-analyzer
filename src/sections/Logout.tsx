@@ -80,12 +80,12 @@ const Logout = () => {
               <span className="text-[9px] font-mono uppercase text-zinc-700 tracking-widest">Status</span>
               <div className="flex items-center gap-1.5">
                 <div className="w-1 h-1 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                <span className="text-[10px] font-mono text-emerald-500/80 uppercase italic">Encrypted</span>
+                <span className="text-[10px] font-mono text-emerald-500/80 uppercase italic">Encrypted & Protected</span>
               </div>
             </div>
             <div className="flex flex-col gap-1 items-end">
               <span className="text-[9px] font-mono uppercase text-zinc-700 tracking-widest">Node</span>
-              <span className="text-[11px] font-medium text-zinc-500 italic text-right">Nexa Resume</span>
+              <span className="text-[11px] font-medium text-zinc-500 italic text-right">NexaCV (Active 🚀)</span>
             </div>
           </div>
         </div>
