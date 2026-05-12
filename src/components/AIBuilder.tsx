@@ -94,7 +94,7 @@ const AIBuilderFeature = () => {
 
             <button 
               onClick={() => navigate('/AIResumeBuilder')}
-              className="px-10 py-5 bg-blue-600 text-white font-black rounded-[2rem] hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20 active:scale-95"
+              className=" cursor-pointer px-10 py-5 bg-blue-600 text-white font-black rounded-[2rem] hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20 active:scale-95"
             >
               Get Free Access
             </button>
