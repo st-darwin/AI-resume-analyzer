@@ -201,7 +201,7 @@ const AIResumeBuilder = () => {
 
                 <button 
                   onClick={handleGenerate} disabled={isGenerating}
-                  className="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-indigo-600 transition-all flex items-center justify-center gap-3 text-xs tracking-widest uppercase mt-4 shadow-lg shadow-indigo-200"
+                  className=" cursor-pointer w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-indigo-600 transition-all flex items-center justify-center gap-3 text-xs tracking-widest uppercase mt-4 shadow-lg shadow-indigo-200"
                 >
                   {isGenerating ? 'Synthesizing...' : <><Zap className="w-4 h-4 fill-current"/> Generate Profile</>}
                 </button>
