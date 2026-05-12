@@ -50,7 +50,7 @@ const Pricing = () => {
 
             <button 
               onClick={() => navigate('/ResumeBuilder')}
-              className="w-full py-5 border-2 border-slate-100 text-slate-900 font-black rounded-2xl hover:bg-slate-50 transition-all active:scale-95"
+              className=" cursor-pointer w-full py-5 border-2 border-slate-100 text-slate-900 font-black rounded-2xl hover:bg-slate-50 transition-all active:scale-95"
             >
               Start Basic
             </button>
@@ -98,7 +98,7 @@ const Pricing = () => {
 
               <button 
                 onClick={() => navigate('/AIResumeBuilder')}
-                className="w-full py-5 bg-blue-600 text-white font-[1000] uppercase tracking-widest text-xs rounded-2xl shadow-xl shadow-blue-900/40 hover:bg-blue-500 transition-all active:scale-95 flex items-center justify-center gap-3 group/btn"
+                className=" cursor-pointer w-full py-5 bg-blue-600 text-white font-[1000] uppercase tracking-widest text-xs rounded-2xl shadow-xl shadow-blue-900/40 hover:bg-blue-500 transition-all active:scale-95 flex items-center justify-center gap-3 group/btn"
               >
                 Claim Free Pro Access
                 <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
