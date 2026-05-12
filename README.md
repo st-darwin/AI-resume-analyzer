@@ -30,3 +30,7 @@ src/
 ├── lib/          # Puter SDK orchestration & PDF-to-Image logic
 ├── sections/     # High-fidelity Upload and Resume Analysis views
 └── types/        # Strict TypeScript interfaces for AI & Cloud responses
+
+Developed by Darwin | CEO of NexaLabs 🚀
+
+Advancing the intersection of Clean Architecture and Human-Centric Design.
