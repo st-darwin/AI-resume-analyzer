@@ -23,3 +23,10 @@ Animation: GSAP (GreenSock Animation Platform)
 Cloud Infrastructure: Puter SDK (Distributed KV Storage, Cloud Filesystem, and LLM Integration)
 
 Deployment: Vercel / Netlify
+
+📂 Architecture Overview
+src/
+├── components/   # Reusable "Soft UI" elements (Cloud-integrated Navbar, Uploader)
+├── lib/          # Puter SDK orchestration & PDF-to-Image logic
+├── sections/     # High-fidelity Upload and Resume Analysis views
+└── types/        # Strict TypeScript interfaces for AI & Cloud responses
