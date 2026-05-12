@@ -1,57 +1,25 @@
-https://nexacv-resume.vercel.app/
+🚀 NexaCV: AI-Powered Resume Intelligence
+NexaCV is a high-performance, serverless intelligence layer designed to bridge the gap between job seekers and modern Applicant Tracking Systems (ATS). By leveraging the Puter SDK for cloud-native orchestration, NexaCV transforms static documents into dynamic, actionable career data.
 
-🚀 Nexa CV: AI-Powered Resume Intelligence
-Nexa CV is a high-performance web application designed to bridge the gap between job seekers and Applicant Tracking Systems (ATS). Using the Puter SDK for cloud-native storage and AI analysis, it transforms static PDFs into actionable career insights.
+💎 The Philosophy: "Silk & Slate" Engineering
+Built with a focus on Stoic Engineering—simplicity, low latency, and deep work—NexaCV prioritizes a refined "Soft UI" aesthetic. Every interaction is designed to feel fluid, utilizing subtle blurs, layered shadows, and high-fidelity typography to provide a premium SaaS experience.
 
+✨ Technical Sophistication
+Edge-Native Architecture: A "Zero-Server" approach. All logic—from document parsing to AI-driven scoring—is executed client-side via the Puter SDK, ensuring near-zero latency and total data privacy.
 
-✨ Key Features
-Instant PDF-to-Image Conversion: High-fidelity resume previews using pdf.js with dedicated Web Worker support.
+High-Fidelity PDF Processing: Utilizes pdf.js with dedicated Web Worker support for instant PDF-to-image conversion and high-speed document rendering.
 
-AI-Driven Analysis: Deep-scan technology that evaluates resumes against industry standards for impact, brevity, and style.
+Persistent UUID Routing: Sophisticated state management using the Puter KV Store, generating unique, shareable URLs for every analysis session.
 
-Persistent UUID Routing: Every analysis is stored in the Puter KV Store, allowing users to share unique URLs of their results.
+Motion Orchestration: Powered by GSAP, featuring staggered entry effects and scroll-triggered animations that enhance the spatial awareness of the interface.
 
-Modern UI/UX: Built with React, styled with Tailwind CSS, and brought to life with GSAP animations.
+🛠️ The Stack
+Core: React 19, Vite, TypeScript
 
-🛠️ Tech Stack
-Frontend: React 19, Vite, TypeScript
+Design: Tailwind CSS (Utility-first "Soft UI" architecture)
 
-Styling: Tailwind CSS (utility-first design)
+Animation: GSAP (GreenSock Animation Platform)
 
-Animations: GSAP (ScrollTrigger & Staggered effects)
+Cloud Infrastructure: Puter SDK (Distributed KV Storage, Cloud Filesystem, and LLM Integration)
 
-Cloud Backend: Puter SDK (Key-Value Storage, Filesystem, and AI Chat)
-
-Deployment: Netlify and  Vercel
-
-📂 Project Structure
-
-src/
-├── components/      # Reusable UI elements (Navbar, fileUploader, summary)
-├── lib/             # Puter SDK config, PDF conversion logic, and UUID utils
-├── sections/           # Upload (Home) and Resume (Results) views
-├── types/           # Strong TypeScript interfaces for Puter responses
-└── App.tsx          # Main routing logic
-
-🚀 Getting Started
-1. Clone the repository
-
-git clone https://github.com/st-darwin/AI-resume-analyzer.git
-
-2. Install dependencies
-
-npm install
-
-3. Run locally
-
-npm run dev
-
-Architecture Highlights
-
-The app utilizes a Zero-Server approach. All logic—from file uploading to AI processing—happens directly in the browser via the Puter SDK, ensuring low latency and high privacy.
------------------------------------------------
-Developed by Darwin (CEO of NexaLabs) 🚀
-
------------------------------------------------
-
-
+Deployment: Vercel / Netlify
