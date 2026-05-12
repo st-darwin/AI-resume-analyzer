@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { BrainCircuit } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,7 +23,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center gap-2.5 mb-6 group">
               <div className="w-9 h-9 bg-slate-900 rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform">
-                <span className="text-indigo-400">{Icons.Sparkles}</span>
+                <span className="text-indigo-400">{<BrainCircuit/>}</span>
               </div>
               <span className="text-xl font-black text-slate-900 tracking-tighter uppercase">
                 Nexa<span className="text-indigo-600">CV</span>
@@ -66,7 +67,7 @@ const Footer = () => {
                     <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Systems Nominal</span>
                 </div>
                 <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
-                    V2.4 Neural Core active. All services operational across all regions.
+                    V1.0 Neural Core active. All services operational across all regions.
                 </p>
             </div>
           </div>
@@ -75,11 +76,11 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
-            &copy; {currentYear} Darwin | NexaTech Intelligence
+            &copy; {currentYear} Darwin | NexaLabs
           </p>
           <div className="flex items-center gap-8">
-            <Link to="/privacy" className="text-[10px] font-black text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Privacy</Link>
-            <Link to="/terms" className="text-[10px] font-black text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Terms</Link>
+            <Link to="/" className="text-[10px] font-black text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Privacy</Link>
+            <Link to="/" className="text-[10px] font-black text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Terms</Link>
           </div>
         </div>
       </div>
