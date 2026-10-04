@@ -1,0 +1,76 @@
+/* Smooth fade-in animation for mobile menu content */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+/* Smooth transitions for all navbar elements */
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navbar shadow effect on scroll */
+nav {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Smooth link underline animation */
+a {
+  position: relative;
+}
+
+/* Primary button smooth effects */
+.primary-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.primary-button:hover::before {
+  left: 100%;
+}
+
+/* Dropdown menu animations */
+.scale-y-100 {
+  transform: scaleY(1);
+}
+
+.scale-y-95 {
+  transform: scaleY(0.95);
+}
+
