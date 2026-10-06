@@ -60,7 +60,7 @@ const Home = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
           <button
             onClick={() => navigate('/Upload')}
-            className="group relative px-8 py-4 bg-slate-900 text-white font-black rounded-2xl transition-all duration-300 shadow-xl shadow-slate-900/10 hover:bg-blue-600 active:scale-95 w-full sm:w-auto overflow-hidden cursor-pointer"
+            className="group relative px-8 py-4 bg-slate-900 text-white font-semibold rounded-2xl transition-all duration-300 shadow-xl shadow-slate-900/10 hover:bg-blue-600 active:scale-95 w-full sm:w-auto overflow-hidden cursor-pointer"
           >
             <span className="relative flex items-center justify-center gap-3 text-base">
               Get Started Free
@@ -72,7 +72,7 @@ const Home = () => {
 
           <button
             onClick={() => navigate('/History')}
-            className="px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl border border-slate-200/80 hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300 w-full sm:w-auto cursor-pointer shadow-sm"
+            className="px-8 py-4 bg-white text-slate-900 font-semibold rounded-2xl border border-slate-200/80 hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300 w-full sm:w-auto cursor-pointer shadow-sm"
           >
             View History
           </button>
@@ -119,8 +119,8 @@ const Home = () => {
                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7"/></svg>
               </div>
               <div>
-                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">ATS Ready</p>
-                 <p className="text-sm font-bold text-slate-900">Resume Optimized</p>
+                 <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">ATS Ready</p>
+                 <p className="text-sm font-semibold text-slate-900">Resume Optimized</p>
               </div>
            </div>
         </div>
